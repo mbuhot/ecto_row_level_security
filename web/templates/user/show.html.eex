@@ -1,0 +1,18 @@
+<h2>Show user</h2>
+
+<ul>
+
+  <li>
+    <strong>Uuid:</strong>
+    <%= @user.uuid %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: user_path(@conn, :edit, @user) %>
+<%= link "Back", to: user_path(@conn, :index) %>
