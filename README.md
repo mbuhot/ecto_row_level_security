@@ -1,4 +1,4 @@
-# Learn RLS
+# Ecto Row Level Security
 
 This repo demonstrates a very simple application of Postgres Row Level Security.
 The goal is to ensure that contents of the `messages` table are only visible to the creator of the message.
