@@ -7,6 +7,7 @@ defmodule Learnrls.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :authenticate
   end
 
   pipeline :api do
@@ -19,6 +20,15 @@ defmodule Learnrls.Router do
     get "/", PageController, :index
     resources "/users", UserController
     resources "/messages", MessageController
+  end
+
+  def authenticate(conn, _params) do
+    user_id = conn.params["user_id"] || get_session(conn, :user_id)
+
+    conn
+    |> Plug.Conn.put_session(:user_id, user_id)
+    |> assign(:user_id, user_id)
+    |> IO.inspect
   end
 
   # Other scopes may use custom stacks.

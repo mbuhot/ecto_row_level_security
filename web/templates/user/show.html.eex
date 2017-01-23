@@ -4,7 +4,7 @@
 
   <li>
     <strong>Uuid:</strong>
-    <%= @user.uuid %>
+    <%= @user.id %>
   </li>
 
   <li>
