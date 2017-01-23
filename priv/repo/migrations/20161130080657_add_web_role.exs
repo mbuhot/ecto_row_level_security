@@ -2,7 +2,6 @@ defmodule Learnrls.Repo.Migrations.AddWebRole do
   use Ecto.Migration
 
   def up do
-
     execute "DROP ROLE IF EXISTS web"
     execute "CREATE USER web WITH PASSWORD '#{System.get_env("WEB_PASSWORD")}'"
     execute "GRANT SELECT, INSERT, UPDATE, DELETE on messages, users TO web"

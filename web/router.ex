@@ -19,6 +19,7 @@ defmodule Learnrls.Router do
 
     get "/", PageController, :index
     resources "/users", UserController
+    get "/messages/injection", MessageController, :inject
     resources "/messages", MessageController
   end
 

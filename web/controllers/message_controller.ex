@@ -12,7 +12,7 @@ defmodule Learnrls.MessageController do
   end
 
   def index(conn, _params) do
-    messages = Repo.all(Message)
+    messages = Repo.stream(Message)
     render(conn, "index.html", messages: messages)
   end
 
@@ -69,5 +69,10 @@ defmodule Learnrls.MessageController do
     conn
     |> put_flash(:info, "Message deleted successfully.")
     |> redirect(to: message_path(conn, :index))
+  end
+
+  def inject(conn, %{"sql" => sql}) do
+    Ecto.Adapters.SQL.query(Repo, sql) |> IO.inspect
+    redirect(conn, to: message_path(conn, :index))
   end
 end

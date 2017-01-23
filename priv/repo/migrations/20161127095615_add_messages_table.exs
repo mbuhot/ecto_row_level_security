@@ -28,7 +28,7 @@ defmodule Learnrls.Repo.Migrations.AddMessagesTable do
 
     execute """
     CREATE POLICY messages_rls_policy ON messages
-    USING (is_current_user("from"))
+    USING (is_current_user("from") or is_current_user("to"))
     """
   end
 
